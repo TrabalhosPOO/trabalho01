@@ -8,7 +8,9 @@ public class Dados {
 	public int semjogar;
 	public int contaJogadas = 0;
 	public int Contador;
+	public int contaRodadas = 0;
 	public int semJogar;
+	public int Parar = 0;
 	private Scanner tom;
 	ArrayList<Jogador> Jogando;
 	
@@ -33,9 +35,15 @@ public class Dados {
 	}
 	
 	public void ResultadoDados(int i) {
-		Jogando.get(contaJogadas).setCasa(Jogando.get(contaJogadas).getCasa() + i);
-		Jogando.get(contaJogadas).setRodadas(Jogando.get(contaJogadas).getRodadas() + 1);
-		Rodada(contaJogadas);
+		if(Parar == 0) {
+			Jogando.get(contaJogadas).setCasa(Jogando.get(contaJogadas).getCasa() + i);
+			Jogando.get(contaJogadas).setRodadas(Jogando.get(contaJogadas).getRodadas() + 1);
+			System.out.println("O jogador " + Jogando.get(contaJogadas).getCor() 
+					+ " avançou " + i + " casas");
+			Rodada(contaJogadas);
+		} else {
+			System.out.println("O jogo já acabou, inicie outra partida!");
+		}
 	}
 	
 	protected void Rodada(int i) {
@@ -43,6 +51,8 @@ public class Dados {
 				Jogando.get(i).getCasa() == 38) {
 			if(Jogando.get(i).getSemJogar() > 0) {
 				Jogando.get(i).setSemJogar(Jogando.get(i).getSemJogar() - 1);
+				System.out.println("O jogador " + Jogando.get(i).getCor() + 
+						"não jogará essa rodada");
 			} else {
 				Jogando.get(i).setSemJogar(Jogando.get(i).getSemJogar() + 1);
 				System.out.println("O jogador " + Jogando.get(i).getCor() + 
@@ -52,15 +62,38 @@ public class Dados {
 		
 		else if(Jogando.get(i).getCasa() == 13) {
 			Random a1 = new Random();
-			int res = a1.nextInt(3);
-			switch(res) {
-				case 0:
-					Jogador novoTipo = new Sortudo(Jogando.get(i).getCor());
-					novoTipo.setCor(Jogando.get(i).getCor());
-					novoTipo.setCasa(Jogando.get(i).getCasa());
-					novoTipo.setRodadas(Jogando.get(i).getRodadas());
-					System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
+			int res = a1.nextInt(2);
+			if(Jogando.get(i) instanceof Normal) {
+				switch(res) {
+					case 0:
+						Jogador novoSortudo = new Sortudo(Jogando.get(i).getCor());
+						novoSortudo.setCor(Jogando.get(i).getCor());
+						novoSortudo.setCasa(Jogando.get(i).getCasa());
+						novoSortudo.setRodadas(Jogando.get(i).getRodadas());
+						Sortudo n = (Sortudo) novoSortudo;
+						System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
 							" foi alterado pra Sortudo");
+						break;
+					case 1:
+						Jogador novoTipo2 = new Azarado(Jogando.get(i).getCor());
+						novoTipo2.setCor(Jogando.get(i).getCor());
+						novoTipo2.setCasa(Jogando.get(i).getCasa());
+						novoTipo2.setRodadas(Jogando.get(i).getRodadas());
+						System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
+							" foi alterado pra Azarado");
+					
+						break;
+				}
+			} else if(Jogando.get(i) instanceof Sortudo) {
+				switch(res) {
+				case 0:
+					Jogador novoTipo2 = new Azarado(Jogando.get(i).getCor());
+					novoTipo2.setCor(Jogando.get(i).getCor());
+					novoTipo2.setCasa(Jogando.get(i).getCasa());
+					novoTipo2.setRodadas(Jogando.get(i).getRodadas());
+					System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
+						" foi alterado pra Azarado");
+				
 					break;
 				case 1:
 					Jogador novoTipo1 = new Normal(Jogando.get(i).getCor());
@@ -70,20 +103,30 @@ public class Dados {
 					System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
 							" foi alterado pra Normal");
 					break;
-				case 2:
-					Jogador novoTipo2 = new Azarado(Jogando.get(i).getCor());
-					novoTipo2.setCor(Jogando.get(i).getCor());
-					novoTipo2.setCasa(Jogando.get(i).getCasa());
-					novoTipo2.setRodadas(Jogando.get(i).getRodadas());
+				}
+			} else {
+				switch(res) {
+				case 0:
+					Jogador novoTipo1 = new Normal(Jogando.get(i).getCor());
+					novoTipo1.setCor(Jogando.get(i).getCor());
+					novoTipo1.setCasa(Jogando.get(i).getCasa());
+					novoTipo1.setRodadas(Jogando.get(i).getRodadas());
 					System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
-							" foi alterado pra Azarado");
-					break;
+							" foi alterado pra Normal");
+				case 1:
+					Jogador novoSortudo = new Sortudo(Jogando.get(i).getCor());
+					novoSortudo.setCor(Jogando.get(i).getCor());
+					novoSortudo.setCasa(Jogando.get(i).getCasa());
+					novoSortudo.setRodadas(Jogando.get(i).getRodadas());
+					System.out.println("O tipo do jogador " + Jogando.get(i).getCor() + 
+						" foi alterado pra Sortudo");
+				}
 			}
 		}
 		
 		else if(Jogando.get(i).getCasa() == 5 || Jogando.get(i).getCasa() == 15 
 				|| Jogando.get(i).getCasa() == 30) {
-			if(Jogando.get(i).getTipo().equals("Azarado")) {
+			if(Jogando.get(i) instanceof Azarado) {
 				System.out.println("O jogador " + Jogando.get(i).getCor() + 
 						" é Azarado, então não avança nenhuma casa");
 			}
@@ -96,9 +139,9 @@ public class Dados {
 		
 		else if(Jogando.get(i).getCasa() == 17 || Jogando.get(i).getCasa() == 27) {
 			System.out.println("O jogador da cor " + Jogando.get(i).getCor() + 
-					"parou na casa " + Jogando.get(i).getCasa());
+					" parou na casa " + Jogando.get(i).getCasa());
 			System.out.println("Escolha a cor de um competidor "
-					+ "para voltar ao início(Digite com inicial maiúscula");
+					+ "para voltar ao início(Digite com inicial maiúscula)");
 			System.out.println("--------------------STATUS DA PARTIDA"
 					+ "--------------------");
 			for(int l = 0; l < Jogando.size(); l++) {
@@ -115,9 +158,16 @@ public class Dados {
 		
 		else if(Jogando.get(i).getCasa() >= 40) {
 			System.out.println("O jogador " + Jogando.get(i).getCor() + 
-					"venceu a partida!");
-			System.out.println("Resetando...");
-			//Comando pra resetar tudo e mostrar relatorio
+					" venceu a partida!");
+			System.out.println("Parando...");
+			System.out.println("------------------DADOS " + contaRodadas 
+					+ " rodada------------------");
+			for(int l = 0; l < Jogando.size(); l++) {
+				System.out.println(Jogando.get(l).toString());		
+			}
+			System.out.println("");
+			this.setParar(1);
+			
 		}
 		this.contaJogadas++;
 		verificarRodada(i);
@@ -125,12 +175,15 @@ public class Dados {
 	
 	protected void verificarRodada(int i) {	
 		if(contaJogadas == this.getContador()) {
-			System.out.println("------------------DADOS " + contaJogadas/this.getContador() 
+			System.out.println("");
+			contaRodadas++;
+			System.out.println("------------------DADOS " + contaRodadas 
 					+ " rodada------------------");
 			for(int l = 0; l < Jogando.size(); l++) {
 				System.out.println(Jogando.get(l).toString());		
 			}
-			System.out.println(" ");
+			System.out.println("");
+			contaJogadas = 0;
 		}
 	}
 	
@@ -174,93 +227,25 @@ public class Dados {
 	}
 	
 	protected void jogarNovamente(int i) {
-		int soma = 0;
-		if(this.tipo.equals("Sortudo")) {
-			while(soma < 7) {
-				Random a1 = new Random();
-				Random a2 = new Random();
-				valor = a1.nextInt(1,6);
-				valor2 = a2.nextInt(1,6);
-				soma = valor + valor2;
-			}
-			Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-			Rodada(i);
-		} else if(this.tipo.equals("Normal")) {
-			Random a1 = new Random();
-			Random a2 = new Random();
-			valor = a1.nextInt(1,6);
-			valor2 = a2.nextInt(1,6);
-			soma = valor + valor2;
-			Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-			Rodada(i);
-		} else {
-			soma = 8;
-			while(soma > 7) {
-				Random a1 = new Random();
-				Random a2 = new Random();
-				valor = a1.nextInt(1,6);
-				valor2 = a2.nextInt(1,6);
-				soma = valor + valor2;
-			}
-			Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-			Rodada(i);
-		}
 		
 	}
 	
-	protected void jogarNovamente(int i) {
-		int soma = 0;
-		if(Jogando.get(i).getTipo().equals("Sortudo")) {
-			while(soma < 7) {
-				Random a1 = new Random();
-				Random a2 = new Random();
-				valor = a1.nextInt(1,6);
-				valor2 = a2.nextInt(1,6);
-				soma = valor + valor2;
-			}
-			Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-			Rodada(i);
-		} else if(this.tipo.equals("Normal")) {
-			Random a1 = new Random();
-			Random a2 = new Random();
-			valor = a1.nextInt(1,6);
-			valor2 = a2.nextInt(1,6);
-			soma = valor + valor2;
-			Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-			Rodada(i);
-		} else {
-			soma = 8;
-			while(soma > 7) {
-				Random a1 = new Random();
-				Random a2 = new Random();
-				valor = a1.nextInt(1,6);
-				valor2 = a2.nextInt(1,6);
-				soma = valor + valor2;
-			}
-			Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-			Rodada(i);
-		}
-		
+	public int getSemJogar() {
+		return semJogar;
 	}
-	
-	protected void verificarRodada(int i) {
-		if (valor == valor2) {
-			System.out.println("Valores iguais! O jogador da cor " 
-		+ Jogando.get(i).getCor() + " jogará novamente!");
-			jogarNovamente(i);
-		}
-		
-		else if(contaJogadas == this.getContador()) {
-			System.out.println("");
-			System.out.println("------------------DADOS " + contaJogadas/this.getContador() 
-					+ " rodada------------------");
-			for(int l = 0; l < Jogando.size(); l++) {
-				System.out.println(Jogando.get(l).toString());		
-			}
-			System.out.println(" ");
-		}
+
+	public void setSemJogar(int semJogar) {
+		this.semJogar = semJogar;
 	}
-	
+
+	public int getParar() {
+		return Parar;
+	}
+
+	public void setParar(int parar) {
+		Parar = parar;
+	}
+
 	public int getContador() {
 		return Contador;
 	}

@@ -19,6 +19,22 @@ public class Menu {
 		d1.ResultadoDados(s1.jogarDados());
 		d1.ResultadoDados(a1.jogarDados());
 		
+		d1.ResultadoDados(n1.jogarDados());
+		d1.ResultadoDados(s1.jogarDados());
+		d1.ResultadoDados(a1.jogarDados());
+		
+		d1.ResultadoDados(n1.jogarDados());
+		d1.ResultadoDados(s1.jogarDados());
+		d1.ResultadoDados(a1.jogarDados());
+		
+		d1.ResultadoDados(n1.jogarDados());
+		d1.ResultadoDados(s1.jogarDados());
+		d1.ResultadoDados(a1.jogarDados());
+		
+		d1.ResultadoDados(n1.jogarDados());
+		d1.ResultadoDados(s1.jogarDados());
+		d1.ResultadoDados(a1.jogarDados());
+		
 	}
 
 }

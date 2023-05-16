@@ -24,11 +24,6 @@ public class Sortudo extends Jogador{
 			valor2 = a2.nextInt(1,6);
 			soma = valor + valor2;
 		}
-	
-		System.out.println("");
-		System.out.println(this.cor);
-		System.out.println("Valor dado1=" + this.valor + " Valor dado2=" + this.valor2);
-		System.out.println("O jogador " + this.cor + " avançou " + (valor+valor2) + "casas");
 		
 		return soma;
 	}
