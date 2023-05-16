@@ -1,9 +1,5 @@
 package Trabalho01;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-
 public abstract class Jogador{
 	protected int rodadas;
 	protected String cor;
@@ -19,15 +15,7 @@ public abstract class Jogador{
 		this.semJogar = 0;
 	}
 	
-	public abstract int jogarDados() {
-		int soma = 0;
-		Random a1 = new Random();
-		Random a2 = new Random();
-		valor = a1.nextInt(1,6);
-		valor2 = a2.nextInt(1,6);
-		soma = valor + valor2;
-		return soma;
-	}
+	public abstract int jogarDados();
 
 	public int getContaJogadas() {
 		return contaJogadas;
