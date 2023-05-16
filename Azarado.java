@@ -1,41 +1,35 @@
 package Trabalho01;
 
-import java.util.ArrayList;
 import java.util.Random;
-
 
 public class Azarado extends Jogador{
 	private String tipo;
 	private int valor;
 	private int valor2;
-	private int semJogar;
 	private int contaJogadas = 0;
-	ArrayList<Dados> Jogando;
 	
 	public Azarado(String cor){
-		this.cor = cor;
+		super(cor);
 		this.tipo = "Azarado";
-		this.Jogando = new ArrayList<>();
 	}
 	
-	public void jogarDados(Jogador j) {
-		for(int i = 0; i < Jogando.size(); i++) {
-			if(this.semJogar == 0 
-					&& Jogando.get(i).getCor().equals(j.getCor())) {
-				int soma = 8;
-				while(soma > 7) {
-					Random a1 = new Random();
-					Random a2 = new Random();
-					valor = a1.nextInt(1,6);
-					valor2 = a2.nextInt(1,6);
-					soma = valor + valor2;
-				}
-				Jogando.get(i).setCasa(Jogando.get(i).getCasa() + soma);
-				Jogando.get(i).setRodadas(Jogando.get(i).getRodadas() + 1);
-				contaJogadas++;
-				CasasEspeciais(i);
-			}
+	@Override
+	public int jogarDados() {
+		int soma = 8;
+		while(soma > 7) {
+			Random a1 = new Random();
+			Random a2 = new Random();
+			valor = a1.nextInt(1,6);
+			valor2 = a2.nextInt(1,6);
+			soma = valor + valor2;
 		}
+		System.out.println("");
+		System.out.println(this.cor);
+		System.out.println("Valor dado1=" + this.valor + " Valor dado2=" + this.valor2);
+		System.out.println("O jogador " + this.cor + " avançou " + (valor+valor2) + "casas");
+		
+		return soma;
+	
 	}
 
 	public int getContaJogadas() {
@@ -56,8 +50,10 @@ public class Azarado extends Jogador{
 
 	@Override
 	public String toString() {
-		return "Azarado [tipo=" + tipo + ", Jogando=" + Jogando + "]";
+		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa + "]";
 	}
+
+	
 
 	
 	

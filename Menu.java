@@ -3,34 +3,22 @@ package Trabalho01;
 public class Menu {
 
 	public static void main(String[] args) {
-		Dados d1 = new Dados("Preto");
-		Dados d2 = new Dados("Branco");
-		Dados d3= new Dados("Verde");
+		
+		Dados d1 = new Dados();
 		
 		Normal n1 = new Normal("Preto");
-		Azarado a1 = new Azarado("Branco");
 		Sortudo s1 = new Sortudo("Verde");
-
+		Azarado a1 = new Azarado("Branco");
 		
-		n1.inscreverJogadores(d1);
-		a1.inscreverJogadores(d2);
-		s1.inscreverJogadores(d3);
+		d1.inscreverJogadores(n1);
+		d1.inscreverJogadores(s1);
+		d1.inscreverJogadores(a1);
+		d1.status();
 		
-		n1.jogarDados(d1);
-		a1.jogarDados(d2);
-		s1.jogarDados(d3);
+		d1.ResultadoDados(n1.jogarDados());
+		d1.ResultadoDados(s1.jogarDados());
+		d1.ResultadoDados(a1.jogarDados());
 		
-		n1.jogarDados(d1);
-		a1.jogarDados(d2);
-		s1.jogarDados(d3);
-		
-		n1.jogarDados(d1);
-		a1.jogarDados(d2);
-		s1.jogarDados(d3);
-		
-		n1.jogarDados(d1);
-		a1.jogarDados(d2);
-		s1.jogarDados(d3);
 	}
 
 }
