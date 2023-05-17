@@ -6,9 +6,9 @@ public class Menu {
 		
 		Dados d1 = new Dados();
 		
-		Normal n1 = new Normal("Preto");
-		Sortudo s1 = new Sortudo("Verde");
-		Azarado a1 = new Azarado("Branco");
+		Jogador n1 = new Normal("Preto");
+		Jogador s1 = new Sortudo("Verde");
+		Jogador a1 = new Azarado("Branco");
 		
 		d1.inscreverJogadores(n1);
 		d1.inscreverJogadores(s1);
