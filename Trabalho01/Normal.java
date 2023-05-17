@@ -18,15 +18,37 @@ public class Normal extends Jogador{
 	
 	@Override
 	public int jogarDados() {
+		if(this.casa >= 40) {
+			System.out.println("O jogo já acabou, inicie outra partida!");
+			return 0;
+		} else {
 		int soma = 0;
 		Random a1 = new Random();
 		Random a2 = new Random();
 		valor = a1.nextInt(1,6);
 		valor2 = a2.nextInt(1,6);
 		soma = valor + valor2;
-		setContaJogadas(getContaJogadas() + 1);
+		if(valor == valor2) {
+			soma = jogarNovamente(valor + valor2);
+		}
 		return soma;
 		}
+	}
+	
+	protected int jogarNovamente(int i) {
+		System.out.println("Valores iguais para " + this.cor + 
+				"! você jogará novamente");
+		int soma = 0;
+		Random a1 = new Random();
+		Random a2 = new Random();
+		valor = a1.nextInt(1,6);
+		valor2 = a2.nextInt(1,6);
+		soma = i + valor + valor2;
+		if(valor == valor2) {
+			soma = jogarNovamente(i + valor + valor2);
+		} 
+		return soma;
+	}
 
 
 	public String getTipo() {
@@ -55,9 +77,9 @@ public class Normal extends Jogador{
 
 	@Override
 	public String toString() {
-		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa + "]";
+		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa 
+				+ " rodadas=" + rodadas + "]";
 	}
-	
 	
 }
 

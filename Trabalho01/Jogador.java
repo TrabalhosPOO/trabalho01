@@ -6,6 +6,7 @@ public abstract class Jogador{
 	protected int casa;
 	protected int contaJogadas = 0;
 	protected int semJogar;
+	protected int contaTipo;
 
 	public Jogador() {
 	}

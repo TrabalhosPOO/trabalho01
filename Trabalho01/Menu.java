@@ -12,6 +12,7 @@ public class Menu {
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Dados d1 = new Dados();
+
 		int op = 0;
 		Scanner scanner = new Scanner(System.in);
 
