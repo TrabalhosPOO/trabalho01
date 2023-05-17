@@ -11,6 +11,8 @@ public class Azarado extends Jogador{
 		super(cor);
 		this.tipo = "Azarado";
 	}
+
+	public Azarado(){}
 	
 	@Override
 	public int jogarDados() {

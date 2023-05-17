@@ -13,6 +13,8 @@ public class Normal extends Jogador{
 		super(cor);
 		this.tipo = "Normal";
 	}
+
+	public Normal(){}
 	
 	@Override
 	public int jogarDados() {

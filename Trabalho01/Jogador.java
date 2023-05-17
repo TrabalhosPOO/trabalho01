@@ -7,6 +7,9 @@ public abstract class Jogador{
 	protected int contaJogadas = 0;
 	protected int semJogar;
 
+	public Jogador() {
+	}
+
 	public Jogador(String c) {
 		this.cor = c;
 		this.rodadas = 0;

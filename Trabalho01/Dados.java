@@ -30,7 +30,7 @@ public class Dados {
 	
 	public void status() {
 		for(int i = 0; i < Jogando.size(); i++) {
-			System.out.println("Jogador " + (i+1) + Jogando.get(i).toString());
+			System.out.println("\nJogador " + (i+1)+ " -  Tipo: " + Jogando.get(i).getClass().getSimpleName() + " | Cor: "+ Jogando.get(i).getCor() + " | Posicao: "+ Jogando.get(i).getCasa());
 		}
 	}
 	
@@ -154,9 +154,7 @@ public class Dados {
 					+ "para voltar ao início(Digite com inicial maiúscula)");
 			System.out.println("--------------------STATUS DA PARTIDA"
 					+ "--------------------");
-			for(int l = 0; l < Jogando.size(); l++) {
-				System.out.println(Jogando.get(l).toString());		
-			}
+			status();
 			System.out.println("");
 			voltandoInicio();
 			
@@ -167,16 +165,16 @@ public class Dados {
 		}
 		
 		else if(Jogando.get(i).getCasa() >= 40) {
-			System.out.println("O jogador " + Jogando.get(i).getCor() + 
-					" venceu a partida!");
-			System.out.println("Parando...");
+			System.out.println("O JOGADOR " + Jogando.get(i).getCor().toUpperCase() + 
+					" VENCEU A PARTIDA!");
+			Jogando.get(i).setCasa(40);
+			System.out.println("\nParando...\n");
 			System.out.println("------------------DADOS " + contaRodadas 
 					+ " rodada------------------");
-			for(int l = 0; l < Jogando.size(); l++) {
-				System.out.println(Jogando.get(l).toString());		
-			}
+			status();
 			System.out.println("");
-			this.setParar(1);
+			System.exit(0);
+			//this.setParar(1);
 			
 		}
 		this.contaJogadas++;
@@ -189,9 +187,7 @@ public class Dados {
 			contaRodadas++;
 			System.out.println("------------------DADOS " + contaRodadas 
 					+ " rodada------------------");
-			for(int l = 0; l < Jogando.size(); l++) {
-				System.out.println(Jogando.get(l).toString());		
-			}
+			status();
 			System.out.println("");
 			contaJogadas = 0;
 		}
