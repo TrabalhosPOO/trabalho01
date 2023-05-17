@@ -17,7 +17,7 @@ public class Azarado extends Jogador{
 	@Override
 	public int jogarDados() {
 		int soma = 8;
-		while(soma > 7) {
+		while(soma >= 7) {
 			Random a1 = new Random();
 			Random a2 = new Random();
 			valor = a1.nextInt(1,6);
