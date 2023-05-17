@@ -3,7 +3,6 @@ package Trabalho01;
 import java.util.Random;
 
 public class Sortudo extends Jogador{
-	private int contaJogadas = 0;
 	private String tipo;
 	private int semJogar;
 	private int valor;
@@ -44,17 +43,10 @@ public class Sortudo extends Jogador{
 		this.tipo = tipo;
 	}
 
-	public int getContaJogadas() {
-		return contaJogadas;
-	}
-
-	public void setContaJogadas(int contaJogadas) {
-		this.contaJogadas = contaJogadas;
-	}
-
 	@Override
 	public String toString() {
-		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa + "]";
+		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa 
+				+ " rodadas=" + rodadas + "]";
 	}
 	
 	

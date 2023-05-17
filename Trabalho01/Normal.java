@@ -53,9 +53,9 @@ public class Normal extends Jogador{
 
 	@Override
 	public String toString() {
-		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa + "]";
+		return " [tipo=" + tipo + " cor=" + cor + " posicao=" + casa 
+				+ " rodadas=" + rodadas + "]";
 	}
-	
 	
 }
 
