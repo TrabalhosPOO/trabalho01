@@ -11,6 +11,8 @@ public class Azarado extends Jogador{
 		super(cor);
 		this.tipo = "Azarado";
 	}
+
+	public Azarado(){}
 	
 	@Override
 	public int jogarDados() {
@@ -19,7 +21,7 @@ public class Azarado extends Jogador{
 			return 0;
 		} else {
 		int soma = 8;
-		while(soma > 7) {
+		while(soma >= 7) {
 			Random a1 = new Random();
 			Random a2 = new Random();
 			valor = a1.nextInt(1,6);

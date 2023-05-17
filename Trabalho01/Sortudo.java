@@ -8,10 +8,18 @@ public class Sortudo extends Jogador{
 	private int valor;
 	private int valor2;
 	
+	public Sortudo() {
+		
+	}
+
+
+
 	public Sortudo(String cor){
 		super(cor);
 		this.tipo = "Sortudo";
 	}
+
+	
 	
 	@Override
 	public int jogarDados() {

@@ -8,6 +8,9 @@ public abstract class Jogador{
 	protected int semJogar;
 	protected int contaTipo;
 
+	public Jogador() {
+	}
+
 	public Jogador(String c) {
 		this.cor = c;
 		this.rodadas = 0;
