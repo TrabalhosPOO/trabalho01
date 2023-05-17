@@ -6,9 +6,9 @@ public class Menu {
 		
 		Dados d1 = new Dados();
 		
-		Jogador n1 = new Normal("Preto");
-		Jogador s1 = new Sortudo("Verde");
-		Jogador a1 = new Azarado("Branco");
+		Normal n1 = new Normal("Preto");
+		Sortudo s1 = new Sortudo("Verde");
+		Azarado a1 = new Azarado("Branco");
 		
 		d1.inscreverJogadores(n1);
 		d1.inscreverJogadores(s1);
@@ -31,14 +31,6 @@ public class Menu {
 		d1.ResultadoDados(s1.jogarDados());
 		d1.ResultadoDados(a1.jogarDados());
 		
-		d1.ResultadoDados(n1.jogarDados());
-		d1.ResultadoDados(s1.jogarDados());
-		d1.ResultadoDados(a1.jogarDados());
-
-		d1.ResultadoDados(n1.jogarDados());
-		d1.ResultadoDados(s1.jogarDados());
-		d1.ResultadoDados(a1.jogarDados());
-
 		
 	}
 
